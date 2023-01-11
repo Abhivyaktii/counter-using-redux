@@ -1,27 +1,30 @@
 import React from 'react'
 import { useSelector,useDispatch } from 'react-redux'
+// import  actions  from './store'  
+import { increment, decrement, addBy } from './store/index'
 
 
 export default function App() {
   const counter = useSelector((state) => state.counter)
   const dispatch=useDispatch()
-  const increment=()=>{
-    dispatch({type:'INC'})
+  const incrementfunc=()=>{
+    console.log("dispatched");
+    dispatch(increment())
   }
-  const decrement=()=>{
-    dispatch({type:'DEC'})
+  const decrementfunc=()=>{
+    dispatch(decrement())
   }
 
-  const addby=()=>{
-    dispatch({type:'ADD_BY',payload:10})
+  const addByfunc=()=>{
+    dispatch(addBy(10))
   }
   return (
     <>
       <h1>Counter</h1>
       <h2>{counter}</h2>
-      <button onClick={increment}>increment</button>
-      <button onClick={decrement}>decrement</button>
-      <button onClick={addby}>AddBY</button>
+      <button onClick={decrementfunc}>decrement</button>
+      <button onClick={incrementfunc}>increment</button>
+      <button onClick={addByfunc}>AddBY</button>
     </>
   )
 }
